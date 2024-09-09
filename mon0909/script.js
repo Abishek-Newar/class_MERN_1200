@@ -46,3 +46,17 @@ const z = 10
  // B  80-89
 //  C  70-79
 //  D  0-69
+
+
+var a = 90;
+if(a>=90 && a<=100){
+    console.log("A")
+}else if(a>=80 && a<=89){
+    console.log("B")
+}else if(a>=70 && a<=79){
+    console.log("C")
+}else if(a>=0 && a<=69){
+    console.log("D")
+}else{
+    console.warn("Enter number between 0-100")
+}
