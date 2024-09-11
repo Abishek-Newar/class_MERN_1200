@@ -46,7 +46,7 @@ var sliced_array = first_array.slice(1,3);
 console.log(sliced_array)
 
 //splice: add array at any index
-first_array.splice(1,3,45,"React","MERn");
+first_array.splice(1,3,45,"React","MERN");
 console.log(first_array)
 
 //add element between the array
@@ -82,3 +82,17 @@ arrow_function();
 //take a array and ask a input from the user and perform search 
 //if the number is in the array return index else return -1
 
+var array_dummy = [3,5,2,1,6,7,8]
+let flag = 0;
+let key = parseInt(prompt("Enter a numebr: "))
+
+for(let i = 0;i<array_dummy.length;i++){
+    if(array_dummy[i] == key){
+        console.log(i)
+        flag = 1;
+    }
+}
+
+if(flag === 0){
+    console.log("-1");
+}
