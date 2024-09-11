@@ -15,23 +15,32 @@ var first_number = 10;
 var first_array = [10,"HTML","CSS",true];
 console.log(first_array[0])
 
+
 //push: add value at end
 first_array.push(765)
 console.log(first_array)
+
+
 //pop: remove value from end
 first_array.pop()
 first_array.pop()
 console.log(first_array)
 
+
 //shift: removes the first element 
 first_array.shift()
 console.log(first_array)
 
+
 //unshift: add element in front
 first_array.unshift("JS")
 console.log(first_array)
+
+
 //length: find the length of the array
 console.log(first_array.length)
+
+
 // slice: take a part of array
 var sliced_array = first_array.slice(1,3);
 console.log(sliced_array)
@@ -67,4 +76,9 @@ var arrow_function = ()=>{
     console.log("heelo there from arrow fucntion")
 }
 arrow_function();
+
+
+
+//take a array and ask a input from the user and perform search 
+//if the number is in the array return index else return -1
 
