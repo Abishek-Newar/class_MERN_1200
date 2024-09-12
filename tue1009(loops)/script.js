@@ -45,6 +45,6 @@ do{
 
 //take user input
 
-var a = parseInt(prompt("enter a number"))
+var d = parseInt(prompt("enter a number"))
 
 //write a program to print the table of a number given by user
