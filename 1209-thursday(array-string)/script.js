@@ -51,4 +51,12 @@ for(let item in arr){
 // let,const -- block scoped
 
 
+// var string_arr = ["orange","apple","strawberry"] -> f
+// ["orfnge","fpple","strfwberry"];
+for(let i = 0;i<string_arr.length;i++){
+    string_arr[i] = string_arr[i].replaceAll("a","f")
+}
+console.log(string_arr)
+
+
 
