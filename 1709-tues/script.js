@@ -34,3 +34,42 @@ var number1 = 10%2 === 0 ? true : false
 console.log(number1)
 
 
+//DOM : Document Object Model
+
+var header = document.getElementById("header-element")
+console.log(header)
+
+//innerText: to see the inner text of the element
+console.log(header.innerText)
+
+//innerHTML: to seee the inenr HTML of the element
+console.log(header.innerHTML)
+
+//change the innter text using innerText
+header.innerText = "CSS"
+
+//change the style using style 
+header.style.color = "red"
+
+//createElement: create a new element
+var divElement = document.createElement("span")
+divElement.innerHTML = "JavaScript";
+
+//add new elementat the end inside the header
+header.append(divElement)
+
+//add new element at the starting of the header
+header.prepend(divElement)
+
+//add new element after the header
+header.after(divElement)
+
+//add new element before the header
+header.before(divElement)
+
+
+
+
+
+
+
