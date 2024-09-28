@@ -7,8 +7,8 @@ fetch('https://dummyjson.com/products')
 .then((res)=>console.log(res))
 
 async function serverCall(){
-    const res = await fetch('https://dummyjson.com/products')
-    const data = await res.json()
+    const res =  fetch('https://dummyjson.com/products')
+    const data = res.json()
     console.log(data)
 }
 

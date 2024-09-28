@@ -13,7 +13,7 @@ app.post("/adddata",async(req,res)=>{
     })
     res.json({response})
 })
-
+var a = parse
 
 app.listen(3000,()=>{
     console.log("server connected")

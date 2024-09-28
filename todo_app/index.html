@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            align-items: center;
+            gap:10px;
+            height: 20px;
+            margin-bottom: 40px;
+        }
+        .labelfortext{
+            display: flex;
+            align-items: center;
+            gap:3px;
+        }
+        input{
+            height: 17px;
+        }
+        .todo{
+            width: 500px;
+            border: 1px solid #000;
+            height: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="text" class="labelfortext">
+            <p>TEXT: </p>
+            <input type="text" id="text">
+        </label>
+        <button onclick="addTodo()">ADD</button>
+    </div>
+
+    <div class="todo" id="todo" ></div>
+    <script src="script.js"></script>
+   
+</body>
+</html>

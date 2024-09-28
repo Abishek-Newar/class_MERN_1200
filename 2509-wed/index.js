@@ -13,16 +13,40 @@
 // npm  i/install  package-name 
 
 
-const express = require("express")
+// const express = require("express")
 
-const app = express()
+// const app = express()
 
-//post,get,put,delete,patch
+// //post,get,put,delete,patch
 
-app.get("/getdata",(req,res)=>{
-    res.send("hi there")
-})
+// app.get("/getdata",(req,res)=>{
+//     res.send("hi there")
+// })
 
-app.listen(3000,()=>{
-    console.log("server connected")
-})
+// app.listen(3000,()=>{
+//     console.log("server connected")
+// })
+
+
+
+var a = "abc3241rasds/+="
+console.log(a[4])
+
+var b = [1,2,3,"abc",true]
+console.log(b[4])
+
+
+function sum (a,b){
+    console.log(a+b)
+}
+
+sum(10,20)
+
+const subs = (a)=>{
+    let i = 1;
+    while(i<=10){
+        console.log(i*a)
+        i+=1
+    }
+}
+subs(32)
