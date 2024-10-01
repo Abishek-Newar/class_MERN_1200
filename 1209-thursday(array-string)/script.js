@@ -1,62 +1,62 @@
-// //in built methods of array
-// // map filter reduce sort reverse
-// // for each for in
-// var arr = [1,3,2,4,6,32,22]
-// //map
+//in built methods of array
+// map filter reduce sort reverse
+// for each for in
+var arr = [1,3,2,4,6,32,22]
+//map
 
-// var new_arr = arr.map((item,index)=>{
-//     return item + 1
-// })
-// console.log(new_arr)
-// console.log(arr)
-// //for each
-// arr.forEach((item,index)=>{
-//     console.log(item + 1)
-// })
+var new_arr = arr.map((item,index)=>{
+    return item + 1
+})
+console.log(new_arr)
+console.log(arr)
+//for each
+arr.forEach((item,index)=>{
+    console.log(item + 1)
+})
 
-// //filter 
-// var filter_arr = arr.filter((item,index)=>{
-//     return item !== 1
-// })
-// console.log(filter_arr)
+//filter 
+var filter_arr = arr.filter((item,index)=>{
+    return item !== 1
+})
+console.log(filter_arr)
 
-// //reduce 
+//reduce 
 
-// var sum = arr.reduce((accumulator,item)=>{
+var sum = arr.reduce((accumulator,item)=>{
     
-//     accumulator+= item
-//     return accumulator
-// })
-// console.log(sum)
-// var string_arr = ["orange","apple","strawberry"]
-// //sort
-// string_arr.sort()
-// console.log(string_arr)
+    accumulator+= item
+    return accumulator
+})
+console.log(sum)
+var string_arr = ["orange","apple","strawberry"]
+//sort
+string_arr.sort()
+console.log(string_arr)
 
-// //reverse
+//reverse
 
-// arr.reverse()
-// console.log(arr)
-
-
-// //for in
-// for(let item in arr){
-//     console.log(item)
-// }
+arr.reverse()
+console.log(arr)
 
 
-// //HOISTING **
+//for in
+for(let item in arr){
+    console.log(item)
+}
 
-// // var -- global scoped 
-// // let,const -- block scoped
+
+//HOISTING **
+
+// var -- global scoped 
+// let,const -- block scoped
 
 
-// // var string_arr = ["orange","apple","strawberry"] -> f
-// // ["orfnge","fpple","strfwberry"];
-// for(let i = 0;i<string_arr.length;i++){
-//     string_arr[i] = string_arr[i].replaceAll("a","f")
-// }
-// console.log(string_arr)
+// var string_arr = ["orange","apple","strawberry"] -> f
+// ["orfnge","fpple","strfwberry"];
+for(let i = 0;i<string_arr.length;i++){
+    string_arr[i] = string_arr[i].replaceAll("a","f")
+}
+console.log(string_arr)
 
 
 
@@ -108,3 +108,33 @@ newArr.splice(2,2,39,49)
 console.log("spliced: ",newArr)
 //slice: str_idx,ed_idx
 console.log(newArr.slice(4,))
+
+//for each
+var a = [1,2,3,4,5,6]
+a.forEach((item)=>{
+    item += 10
+})
+// map
+var ab = a.map((item)=>{
+   return item += 10
+})
+console.log("map: ",ab)
+// filter
+var ac = a.filter((item)=>{
+    return item % 2 === 0
+})
+console.log("filter: ",ac)
+//for in
+for(let itr in a){
+    a[itr] += 10
+}
+
+console.log("forin: ",a)
+
+//reduce
+var initial  = 20
+var b = a.reduce((acc,item)=>{
+    return acc + item
+},initial)
+console.log(b)
+
