@@ -1,8 +1,9 @@
 const express = require("express")
 const todo = require("./db.js")
+const cors = require("cors")
 const app = express()
 app.use(express.json())
-
+app.use(cors())
 //data accepting
 //body, headers, parameters, query
 
