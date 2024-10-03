@@ -14,6 +14,7 @@ const Home = () => {
 
     fetchData()
   },[])
+  
   return (
     <div>
       <Navbar />

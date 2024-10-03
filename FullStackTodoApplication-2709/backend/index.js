@@ -52,7 +52,8 @@ app.put("/update",async(req,res)=>{
 
 //delete todo
 app.delete("/delete",async(req,res)=>{
-    const body = req.body
+    const body = req.query
+    console.log(body)
     try{
         const response = await todo.deleteOne({
             _id: body.id
