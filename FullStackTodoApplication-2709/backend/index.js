@@ -37,7 +37,7 @@ app.put("/update",async(req,res)=>{
     const body = req.body
     try{
         const response = await todo.updateOne({
-            title: "HTML"
+            _id: body.id
         },{
             title: body.title,
             description: body.description,
