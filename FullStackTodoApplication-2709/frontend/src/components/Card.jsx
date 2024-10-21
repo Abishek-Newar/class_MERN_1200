@@ -28,9 +28,11 @@ const Card = ({data,handleDelete, handleDone}) => {
     }
   }
   return (
-    <div className='w-32 h-32 border-2'>
+    <div className='w-56 min-h-56 h-auto flex flex-col items-center justify-between border-2'>
+      <div className='flex'>
       <FaTrash onClick={()=>handleDelete(data._id)} className='text-red-500 cursor-pointer' />
       <FaRegEdit onClick={()=>setEdit(true)} />
+      </div>
       {
         edit?
         <>
@@ -39,10 +41,10 @@ const Card = ({data,handleDelete, handleDone}) => {
           <button onClick={()=>onChanges()}>Change</button>
         </>
         :
-        <>
+        <div className='flex flex-col gap-6'>
         <h1>{data.title}</h1>
         <p>{data.description}</p>
-        </>
+        </div>
       }
       <div>
         {
