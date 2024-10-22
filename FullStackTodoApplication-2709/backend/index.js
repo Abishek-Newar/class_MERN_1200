@@ -3,6 +3,9 @@ const {todo} = require("./db.js")
 const {user} = require("./db.js")
 const cors = require("cors")
 const app = express()
+
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
 app.use(express.json())
 app.use(cors())
 //data accepting
@@ -83,8 +86,9 @@ app.post("/signup",async(req,res)=>{
             email: body.email,
             password: body.password
         })
-
-        res.json({msg: "account created"})
+        console.log(users)
+        const token = jwt.sign(users._id.toHexString(),process.env.SECRET_KEY)
+        res.json({token: token})
     } catch(e){
         console.log("error",e)
         res.status(403).json({msg: "error while creating user"})
@@ -106,7 +110,8 @@ app.post("/login",async(req,res)=>{
             return res.status(403).json({msg: "user doesn't exist"})
         }
         //return login successful
-        res.json({msg: "login sucessful"})
+        const token = jwt.sign(users._id.toHexString(),process.env.SECRET_KEY)
+        res.json({token: token})
     }catch(e){
         console.log("error while login",e)
         res.status(403).json("error while login")
