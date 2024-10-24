@@ -6,7 +6,7 @@ const Home = () => {
   const [data,setData] = React.useState([])
   React.useEffect(()=>{
     async function fetchData(){
-      const response = await fetch("http://localhost:3000/read")
+      const response = await fetch("http://localhost:3000/todo/read")
      const res = await response.json()
      console.log("response from backend for read",res.response)
      setData(res.response)
@@ -16,7 +16,7 @@ const Home = () => {
   },[])
   async function handleDelete(id){
     try{
-      await fetch(`http://localhost:3000/delete?id=${id}`,{
+      await fetch(`http://localhost:3000/todo/delete?id=${id}`,{
         method: "DELETE",
         headers: {
           "Content-Type": "application/json"
@@ -33,7 +33,7 @@ const Home = () => {
 
   async function handleDone(data){
     try {
-      await fetch(`http://localhost:3000/update`,{
+      await fetch(`http://localhost:3000/todo/update`,{
         method:"PUT",
         headers: {
           "Content-Type": "application/json",

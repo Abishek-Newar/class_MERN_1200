@@ -7,7 +7,7 @@ const Add = () => {
   async function AddTodo(e){
     e.preventDefault()
     try{
-      const response = await fetch("http://localhost:3000/create",{
+      const response = await fetch("http://localhost:3000/todo/create",{
         method: "POST",
         headers: {
           "Content-Type": "application/json"
