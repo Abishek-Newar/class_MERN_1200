@@ -6,7 +6,12 @@ const Home = () => {
   const [data,setData] = React.useState([])
   React.useEffect(()=>{
     async function fetchData(){
-      const response = await fetch("http://localhost:3000/todo/read")
+      const response = await fetch("http://localhost:3000/todo/read",{
+        method: "GET",
+        headers: {
+          "authorization": localStorage.getItem("token")
+        }
+      })
      const res = await response.json()
      console.log("response from backend for read",res.response)
      setData(res.response)

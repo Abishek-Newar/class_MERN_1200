@@ -12,7 +12,8 @@ mongoose.connect(process.env.MONGO_URL)
 const todoSchema = new mongoose.Schema({
     title: String,
     description: String,
-    done: Boolean
+    done: Boolean,
+    userId: String
 })
 
 const userSchema = new mongoose.Schema({

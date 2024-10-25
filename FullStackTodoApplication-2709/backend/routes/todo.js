@@ -1,29 +1,45 @@
 //todo routes
 const express = require("express")
 const {todo} = require("../db.js")
-
+const jwt = require("jsonwebtoken")
 const todoRouter = express.Router()
+require("dotenv").config()
 
+//body, headers,params,query
 //create todo
 todoRouter.post("/create",async(req,res)=>{
     const body = req.body
+    const token = req.headers.authorization
+    
     try{
+        const userId = jwt.verify(token,process.env.SECRET_KEY)
+        console.log(userId)
+        if(!userId){
+            return res.status(403).json({msg: "user id required"})
+        }
         const response = await todo.create({
             title: body.title,
             description: body.description,
-            done: false
+            done: false,
+            userId: userId
         })
         res.json({msg: "inserted"})
     }catch(e){
-        console.log(error)
+        console.log(e)
         res.json({msg: "error occured"})
     }
 })
 
 //read todo
 todoRouter.get("/read",async(req,res)=>{
+    const token = req.headers.authorization
     try{
-        const response = await todo.find({})
+        const userId = jwt.verify(token,process.env.SECRET_KEY)
+        console.log(userId)
+        if(!userId){
+            return res.status(403).json({msg: "user id required"})
+        }
+        const response = await todo.find({userId: userId})
         res.json({response})
     }catch(e){
         res.json({msg: "error"})
