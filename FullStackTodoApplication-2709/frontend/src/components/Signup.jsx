@@ -16,23 +16,30 @@ const Signup = ({authType,setAuthType}) => {
     }
 
     async function handleSubmit(){
-        try{
-            const response  = await fetch("http://localhost:3000/user/signup",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    username: signupdata.username,
-                    email: signupdata.email,
-                    password: signupdata.password
+        let flag = 0
+        if(signupdata.password.length <6){
+            flag = 1
+            alert("password need to be atleast 6 digits")
+        }
+        if(flag === 0){
+            try{
+                const response  = await fetch("http://localhost:3000/user/signup",{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        username: signupdata.username,
+                        email: signupdata.email,
+                        password: signupdata.password
+                    })
                 })
-            })
-            const data = await response.json()
-            localStorage.setItem("token",data.token)
-            navigate("/home")
-        }catch(e){
-            alert("error while signinup")
+                const data = await response.json()
+                localStorage.setItem("token",data.token)
+                navigate("/home")
+            }catch(e){
+                alert("error while signinup")
+            }
         }
     }
   return (
