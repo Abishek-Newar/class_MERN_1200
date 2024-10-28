@@ -2,14 +2,26 @@
 const express = require("express")
 const {user} = require("../db.js")
 const jwt = require("jsonwebtoken")
+const z = require("zod")
 require("dotenv").config()
 
 const userRouter = express.Router()
 
 //signup
+
+const signupValidator = z.object({
+    username: z.string(),
+    email: z.string().email(),
+    password: z.string().min(6)
+})
 userRouter.post("/signup",async(req,res)=>{
     const body = req.body;
 
+    const success = signupValidator.safeParse(body);
+    console.log(success)
+    if(!success.success){
+        return res.status(401).json({msg: "validation error"})
+    }
     try{
         //check user in database
         const check = await user.findOne({email: body.email})
