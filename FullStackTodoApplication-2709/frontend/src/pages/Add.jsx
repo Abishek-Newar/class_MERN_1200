@@ -1,7 +1,14 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import { useNavigate } from 'react-router-dom'
 
 const Add = () => {
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(!localStorage.getItem("token")){
+      navigate("/")
+    }
+  },[])
   const [title,setTitle] = React.useState("")
   const [description,setDecription] = React.useState("")
   async function AddTodo(e){

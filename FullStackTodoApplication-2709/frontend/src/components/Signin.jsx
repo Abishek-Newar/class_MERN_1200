@@ -27,6 +27,9 @@ const Signin = ({authType,setAuthType}) => {
                 })
             })
             const data = await response.json()
+            if (!response.ok) { // Check if response status is not OK (200-299)
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }    
             localStorage.setItem("token",data.token)
             navigate("/home")
         }catch(e){

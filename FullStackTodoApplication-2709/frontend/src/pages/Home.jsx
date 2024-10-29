@@ -1,8 +1,15 @@
 import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Card from '../components/Card'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(!localStorage.getItem("token")){
+      navigate("/")
+    }
+  },[])
   const [data,setData] = React.useState([])
   React.useEffect(()=>{
     async function fetchData(){
