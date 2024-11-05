@@ -48,3 +48,68 @@ function spread_op(a,b,c){
 }
 var d  = [1,2,3]
 spread_op(d)
+
+
+//objects: data store in key value pair
+
+var object_name = {
+    name: "abi",
+    course: "MERN"
+}
+
+console.log(object_name)
+console.log(object_name.name)
+object_name.name = "HTML"
+console.log(object_name['name'])
+
+var array_object = [
+    {
+        name: "jiten",
+        course: "MERN"
+    },
+    {
+        name: "gagan",
+        course: "MERN"
+    }
+]
+console.log(array_object[0].name)
+
+var object_array = {
+    names: ["jiten","sofia"]
+}
+
+console.log(object_array.names[0])
+
+//spread
+function spreads(a,b,...c){
+    console.log(a,b,c)
+}
+
+var arr = [8,9,4]
+
+spreads(...arr)
+
+//rest
+
+function rests(...a){
+    console.log(a)
+}
+
+rests(1,2,3,1,12,3232)
+
+// Destructing array and objects
+
+var [a,b,c] = arr
+console.log(a,b,c)
+
+var {name,course} = object_name
+console.log(name,course)
+
+
+
+
+
+
+
+
+

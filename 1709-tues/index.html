@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #container{
+            min-height: 100vh;
+        }
+        #color{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1 class="header-element" id="header-element">
-        <span>HTML</span>
-    </h1>
-    
+  <div id="container">
+    <h1>Random Color Generator</h1>
+    <h1 id="color"></h1>
+    <div >
+        <button onclick="showRgb()">RGB</button>
+        <button onclick="showHex()">HEX</button>
+    </div>
+  </div>
     <script src="script.js"></script>
 </body>
 </html>

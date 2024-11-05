@@ -138,3 +138,14 @@ var b = a.reduce((acc,item)=>{
 },initial)
 console.log(b)
 
+
+var arrays = [1,3,2,4,3]
+var value = 20;
+var d = arrays.reduce((acc,item)=>{
+    return acc + item
+},value)
+
+//reduce(callbackfn,initial)
+console.log("reduced+ value: ",d)
+
+

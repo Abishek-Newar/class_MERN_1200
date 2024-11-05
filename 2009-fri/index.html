@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 100vh;
+            gap: 20px;
+            justify-content: center;
+        }
+        .box{
+            width: 500px;
+            padding: 10px;
+            border: 2px solid #000;
+        }
+        button{
+            height:40px;
+            border-radius: 10px;
+            background-color: #000;
+            color: white;
+            font-weight: 800;
+        }
+    </style>
 </head>
 <body>
+    <div id="container" class="container">
+    </div>
+    <!-- <button id="load">Load More</button> -->
     <script src="script.js"></script>
 </body>
 </html>
