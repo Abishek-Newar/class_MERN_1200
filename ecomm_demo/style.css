@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6965DB;
+}
+nav ul{
+    display: flex;
+    gap: 10px;
+    font-size: 30px;
+    font-weight: 800;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    list-style: none;
+}
+nav ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+#home{
+    background: url("https://image.hm.com/content/dam/global_campaigns/season_00/ladies/ws60aa/WS60AA-1x1-1-2.jpg?imwidth=1536");
+    min-height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#home h1{
+    font-size: 8rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 800;
+    color: whitesmoke;
+}
+
+.home-button{
+    border: none;
+    height: 40px;
+    width: 150px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all ease .5s;
+}
+.home-button:hover{
+    background-color: #6965DB;
+    color: whitesmoke;
+
+}
+#latest{
+    text-align: center;
+    padding: 50px 0;
+}
+#products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    
+}
+.card{
+    border: 2px solid #000;
+    border-radius: 10px;
+    width: 600px;
+    padding: 10px;
+    text-align: center;
+}
+
+#footer{
+    height: 400px;
+    background-color: #6965DB;
+}

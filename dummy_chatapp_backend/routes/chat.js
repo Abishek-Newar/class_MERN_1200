@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken")
 const chatRouter = express.Router()
 
 //send message
+
 //{message,from,to,date}
 
 //retreive message
