@@ -83,3 +83,14 @@ nav ul li a{
     height: 400px;
     background-color: #6965DB;
 }
+#allProducts{
+    width: 100%;
+    padding: 12vh 0;
+    text-align: center;
+}
+#allProductShow{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+}
