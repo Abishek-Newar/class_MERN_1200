@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //inheritence: inherits the properties of a parent class
+        class car{
+            brand
+            constructor(brand){
+                this.brand = brand
+            }
+            dummy(){
+                console.log("hello from dummy",this.brand)
+            }
+        }
+        class swift extends car{
+            car
+            constructor(brand,car){
+                super(brand)
+                this.car = car
+            }
+            dummy1(){
+                console.log("hello from dummy 1", car)
+            }
+        }
+        var any = new swift("maruti","swift")
+        any.dummy()
+
+        //getters and setters
+
+        class getSet{
+            brand
+            constructor(brand){
+                this.brand = brand
+            }
+            get(){
+                return this.brand
+            }
+            set(x){
+                this.brand = x 
+            }
+        }
+        var getSets = new getSet("Ford")
+        getSets.set("Ferrari")
+        console.log(getSets.get())
+
+    </script>
+</body>
+</html>
