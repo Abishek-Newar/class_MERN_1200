@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Checker</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            min-height: 100vh;
+            width: 90vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:10px;
+            padding: 30px;
+        }
+        input{
+            height: 40px;
+            width: 500px;
+            border-radius: 10px;
+            padding: 3px 10px;
+            font-size: 27px;
+        }
+        button{
+            height: 40px;
+            width: 300px;
+            color:white;
+            font-weight: 800;
+            border: none;
+            border-radius: 10px;
+            background-color: lightgreen;
+            transition: all ease 2s;
+            
+        }
+        button:hover{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="main" class="main">
+        <h1>ENTER THE NUMBER TO CHECK IF PRIME OR COMPOSITE</h1>
+        <input type="number" id="input">
+        <button onclick="check()">Check</button>
+        <h1 id="ans"></h1>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
