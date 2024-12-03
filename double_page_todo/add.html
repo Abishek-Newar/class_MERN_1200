@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        nav{
+            width: 100%;
+            height: 8vh;
+            background-color: rgb(237, 174, 91);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        nav ul a{
+            text-decoration: none;
+        }
+        nav ul li{
+            list-style: none;
+            font-size: 20px;
+            font-weight: 600;
+            color:white;
+        }
+        .container{
+            width: 100%;
+            height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box{
+            display: flex;
+            flex-direction: column;
+            gap:4px;
+            border: 1px solid #000;
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav >
+        <ul>
+            <a href="index.html"><li>Home</li></a>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="box" >
+            <p>Add Todo</p>
+            <input type="text" id="title">
+            <textarea name="" id="description"></textarea>
+            <button onclick="submit()">Add</button>
+        </div>
+    </div>
+    <script src="script.js">
+
+    </script>
+</body>
+</html>

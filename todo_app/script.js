@@ -16,8 +16,7 @@ function add(){
     if(!localStorage.getItem("data")){
         let data = [];
         data.push(input)
-        localStorage.setItem("data",JSON.stringify(data))
-        
+        localStorage.setItem("data",JSON.stringify(data))    
     } else{
         let data = JSON.parse(localStorage.getItem("data"))
         data.push(input)
