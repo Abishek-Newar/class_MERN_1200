@@ -5,7 +5,8 @@
 //events: event handling
 
 const express = require("express")
-const todo = require("./db");
+const {todo} = require("./db");
+const {user} = require("./db")
 
 
 //create server
@@ -111,6 +112,53 @@ app.delete("/delete",async(req,res)=>{
 // }
 
 // dbConnection()
+
+
+//signup route
+
+app.post("/signup",async(req,res)=>{
+    //ask for data
+    const body = req.body;
+    try {
+        //check if user already exist
+        const check = await user.findOne({email: body.email})
+        if(check){
+            return res.json({msg: "user already exist"})
+        }
+        //data entry
+        const response = await user.create({
+            name: body.name,
+            email: body.email,
+            password: body.password
+        })
+        res.json({msg: "user created"})
+
+    } catch (error) {
+        console.log("error in signup",error)
+        return res.json({msg: "error while signup"})
+    }
+})
+//login route
+app.post("/login",async(req,res)=>{
+    //request body
+    const body = req.body;
+    try {
+        //check the user
+        const check = await user.findOne({
+            email: body.email,
+            password: body.password
+        })
+        //if not found
+        if(!check){
+            return res.json({msg: "user does ot exist please signup"})
+        }
+        //if found
+        res.json({msg: "login succesful"})
+    } catch (error) {
+        console.log("error while login",error)
+        return res.json({msg: "error while login"})
+    }
+})
 
 
 

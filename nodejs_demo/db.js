@@ -17,8 +17,15 @@ const todoSchema = new mongoose.Schema({
     done: Boolean
 })
 
+
+const userSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    password: String
+})
+
 //data modeling
 const todo = mongoose.model("todo",todoSchema)
-
+const user = mongoose.model("user",userSchema)
 //exporting as a module
-module.exports = todo
+module.exports = {todo,user}
