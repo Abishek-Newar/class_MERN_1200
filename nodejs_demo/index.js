@@ -7,10 +7,10 @@
 const express = require("express")
 const {todo} = require("./db");
 const {user} = require("./db")
-
-
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
 //create server
-
+require("dotenv").config()
 const app = express()
 
 app.use(express.json())
@@ -119,19 +119,25 @@ app.delete("/delete",async(req,res)=>{
 app.post("/signup",async(req,res)=>{
     //ask for data
     const body = req.body;
+    const salt = bcrypt.genSalt(10)
     try {
         //check if user already exist
         const check = await user.findOne({email: body.email})
         if(check){
             return res.json({msg: "user already exist"})
         }
+        const hashedpass = bcrypt.hash(body.password,salt)
         //data entry
         const response = await user.create({
             name: body.name,
             email: body.email,
-            password: body.password
+            password: hashedpass
         })
-        res.json({msg: "user created"})
+        const token = jwt.sign(response._id.toHexString(),process.env.JWT_SECRET)
+        res.json({
+            msg: "user created",
+            token: token
+        })
 
     } catch (error) {
         console.log("error in signup",error)
@@ -145,15 +151,25 @@ app.post("/login",async(req,res)=>{
     try {
         //check the user
         const check = await user.findOne({
-            email: body.email,
-            password: body.password
+            email: body.email
         })
         //if not found
         if(!check){
-            return res.json({msg: "user does ot exist please signup"})
+            return res.json({msg: "user does not exist please signup"})
+        }
+
+        const comparePass = await  bcrypt.compare(body.password,check.password)
+        if(!comparePass){
+            return res.json({
+                msg: "incorrect password"
+            })
         }
         //if found
-        res.json({msg: "login succesful"})
+        const token = jwt.sign(check._id.toHexString(),process.env.JWT_SECRET)
+        res.json({
+            msg: "user created",
+            token: token
+        })
     } catch (error) {
         console.log("error while login",error)
         return res.json({msg: "error while login"})
@@ -162,6 +178,6 @@ app.post("/login",async(req,res)=>{
 
 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("port connected")
 })

@@ -1,8 +1,9 @@
 //importing mongoose
 const mongoose = require("mongoose")
 
+require("dotenv").config()
 //connecting to database
-mongoose.connect("mongodb+srv://abishekitm:abishek123@cluster0.syapi.mongodb.net/demo")
+mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
     console.log("mongodb connected")
 })
