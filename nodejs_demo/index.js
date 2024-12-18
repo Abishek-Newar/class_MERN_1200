@@ -5,72 +5,17 @@
 //events: event handling
 
 const express = require("express")
-const {todo} = require("./db");
-const {user} = require("./db")
-const jwt = require("jsonwebtoken")
-const bcrypt = require("bcrypt")
+const userRouter = require("./routes/user")
+const todoRouter = require("./routes/todo")
+
 //create server
 require("dotenv").config()
 const app = express()
 
 app.use(express.json())
 
-//CRUD
-//C -> create  ->POST
-app.post("/create",async(req,res)=>{
-    const body = req.body;
-    try {
-        const response = await todo.create({
-            title: body.title,
-            description: body.description,
-            done: false
-        })
-        res.send("todo added")
-    } catch (error) {
-        console.log("error while adding todo",error)
-        res.send("error")
-    }
-})
-
-//R -> READ -> GET
-app.get("/get",async(req,res)=>{
-    try {
-        const response = await todo.find({});
-        res.json(response)
-    } catch (error) {
-        console.log("error while getting data",error)
-        res.send("error while getting data")
-    }
-})
-
-//U -> update -> put 
-app.put("/put",async(req,res)=>{
-    const body = req.body
-    try {
-        const response = await todo.updateOne({_id: body.id},{
-            title: body.title,
-            description: body.descrption,
-            done: false
-        })
-        res.send("updated")
-    } catch (error) {
-        console.log("error while updating data",error)
-        res.send("error while updating data")
-    }
-})
-
-//D -> Delete -> delete 
-app.delete("/delete",async(req,res)=>{
-    const body = req.body
-    try {
-        const response = await todo.deleteOne({_id: body.id})
-        res.send("todo deleted")
-    } catch (error) {
-        console.log("error while deleting data",error)
-        res.send("error while deeleting data")
-    }
-})
-
+app.use("/user",userRouter)
+app.use("/todo",todoRouter)
 
 // const server = http.createServer(async (req, res) => {
 //     if (req.method === 'POST' && req.url === "/") {
@@ -114,67 +59,6 @@ app.delete("/delete",async(req,res)=>{
 // dbConnection()
 
 
-//signup route
-
-app.post("/signup",async(req,res)=>{
-    //ask for data
-    const body = req.body;
-    const salt = bcrypt.genSalt(10)
-    try {
-        //check if user already exist
-        const check = await user.findOne({email: body.email})
-        if(check){
-            return res.json({msg: "user already exist"})
-        }
-        const hashedpass = bcrypt.hash(body.password,salt)
-        //data entry
-        const response = await user.create({
-            name: body.name,
-            email: body.email,
-            password: hashedpass
-        })
-        const token = jwt.sign(response._id.toHexString(),process.env.JWT_SECRET)
-        res.json({
-            msg: "user created",
-            token: token
-        })
-
-    } catch (error) {
-        console.log("error in signup",error)
-        return res.json({msg: "error while signup"})
-    }
-})
-//login route
-app.post("/login",async(req,res)=>{
-    //request body
-    const body = req.body;
-    try {
-        //check the user
-        const check = await user.findOne({
-            email: body.email
-        })
-        //if not found
-        if(!check){
-            return res.json({msg: "user does not exist please signup"})
-        }
-
-        const comparePass = await  bcrypt.compare(body.password,check.password)
-        if(!comparePass){
-            return res.json({
-                msg: "incorrect password"
-            })
-        }
-        //if found
-        const token = jwt.sign(check._id.toHexString(),process.env.JWT_SECRET)
-        res.json({
-            msg: "user created",
-            token: token
-        })
-    } catch (error) {
-        console.log("error while login",error)
-        return res.json({msg: "error while login"})
-    }
-})
 
 
 
