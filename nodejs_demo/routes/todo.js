@@ -13,7 +13,8 @@ todoRouter.post("/create",authMiddleware,async(req,res)=>{
         const response = await todo.create({
             title: body.title,
             description: body.description,
-            done: false
+            done: false,
+            createdBy: req.userId
         })
         res.send("todo added")
     } catch (error) {
@@ -23,9 +24,9 @@ todoRouter.post("/create",authMiddleware,async(req,res)=>{
 })
 
 //R -> READ -> GET
-todoRouter.get("/get",async(req,res)=>{
+todoRouter.get("/get",authMiddleware,async(req,res)=>{
     try {
-        const response = await todo.find({});
+        const response = await todo.find({createdBy: req.userId});
         res.json(response)
     } catch (error) {
         console.log("error while getting data",error)
@@ -34,7 +35,7 @@ todoRouter.get("/get",async(req,res)=>{
 })
 
 //U -> update -> put 
-todoRouter.put("/put",async(req,res)=>{
+todoRouter.put("/put",authMiddleware,async(req,res)=>{
     const body = req.body
     try {
         const response = await todo.updateOne({_id: body.id},{
@@ -50,7 +51,7 @@ todoRouter.put("/put",async(req,res)=>{
 })
 
 //D -> Delete -> delete 
-todoRouter.delete("/delete",async(req,res)=>{
+todoRouter.delete("/delete",authMiddleware,async(req,res)=>{
     const body = req.body
     try {
         const response = await todo.deleteOne({_id: body.id})

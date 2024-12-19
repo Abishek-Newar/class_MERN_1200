@@ -8,6 +8,7 @@ function authMiddleware(req,res,next){
         if(!verify){
             res.json("token required")
         }
+        req.userId= verify
         next()
     } catch (error) {
         console.log("error in authMIddleware",error)
