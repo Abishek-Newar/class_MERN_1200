@@ -34,7 +34,7 @@ function App() {
 export default App
 
 
-// function LabelledInput({name,id,placeholder,type,onChange}){
+// export function LabelledInput({name,id,placeholder,type,onChange}){
 //   return(
 //     <label htmlFor={id}>
 //       <p>{name}</p>
