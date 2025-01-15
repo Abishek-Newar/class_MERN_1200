@@ -1,10 +1,12 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
+import { useFetch } from './useFetch'
+import { useLocalStorage } from './useLocalStorage'
 
 const Navbar = ({data,setData}) => {
-    console.log("hii there")
+    const [name,setName] = useLocalStorage("data","")
   return (
-    <div>
-        navbar
+    <div >
+        <input type="text" onChange={((e)=>setName(e.target.value))} value={name} />
     </div>
   )
 }
