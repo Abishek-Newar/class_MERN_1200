@@ -1,13 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { useContext } from 'react'
 import { context } from '../App'
 
 const Operations = () => {
-    const {count,setCount} = useContext(context)
+  const {count,setCount} = useContext(context)
   return (
-    <div>
-        <button onClick={()=>{setCount(count + 1)}}>increment</button>
-        <button onClick={()=>{setCount(count - 1)}}>decrement</button>
-    </div>
+    <>
+    <button onClick={()=>setCount(count +1)}>Increment</button>
+    <button onClick={()=>setCount(count -1)}>Decrement</button>
+    </>
   )
 }
 
