@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Comp1 from "./components/Comp1";
 function App() {
   let [count,setCount] = useState(0)
   // function increment(){
@@ -27,8 +28,13 @@ function App() {
       <form action="">
         <input type="text" onChange={(e)=>{setName(e.target.value);console.log(e.target.value)}} />
       </form>
+      <Comp1 name="abishek" age={<Comp2 />} names="876" />
     </>
   )
+}
+
+function Comp2(){
+  return<h1>hello</h1>
 }
 
 export default App
